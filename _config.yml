@@ -1,9 +1,9 @@
-title:            Site Title
-description:      Site description for the metas.
+title:            Seattle Data Blog
+description:      Using R to analyze data about Seattle
 logo:             omikron.png
 disqus_shortname: shortname
 # Assign a default image for your site's header and footer
-default_bg:       default_bg.jpg
+default_bg:       Aerial_Downtown_Seattle_November_2011.jpg
 search:           true
 share:            true
 # Read Time is a calculator tp provide post read-time based on word count. Usage is recommended.
@@ -14,7 +14,7 @@ animated_fins:    true
 # Specify the fin color in RGB value
 fin_color:        "255,255,255"
 # Change url to your domain. Leave localhost server or blank when working locally.
-url:              http://localhost:4000
+url:              https://romelm.github.io
 # baseurl:           
 
 # Gems used
@@ -42,12 +42,12 @@ jekyll-archives:
 
 # Owner/author information
 author:
-  name:           Your Name
-  picture:        your-photo.jpg
-  email:          your@email.com
+  name:           Romel D. Mackelprang
+  picture:        profile.jpg
+  email:          romelm@uw.edu
   # Use the coder's toolbox at http://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
-  description:    Some Details about yourself
-  # Social networking links used in footer. Update and remove as you like.
+  description: I am a junior faculty member in the University of Washington Department of Global Health.  My research uses data science, bioinformatics and epidemiology to elucidate host genomic factors that contribute to infectious disease transmission and pathogenesis, with a primary focus on HIV-1.
+# Social networking links used in footer. Update and remove as you like.
   twitter:
   facebook:
   github:
