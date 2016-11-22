@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Trends in Seattle weather, 1950-2016"
+title: "Seattle weather, 1950-2016"
 description: Seattle weather trends, 1950-2016
 headline: Historical Seattle Weather data
 category: Seattle
@@ -9,7 +9,7 @@ comments: false
 mathjax:
 ---
 
-In this post, I examine trends in Seattle weather from 1950-2016.  
+In this post, I examine trends in Seattle weather from 1950-2016.
 
 # Historical weather data from Dark Sky
 

@@ -1,8 +1,7 @@
 file='SeattleWeatherData.rmd'
 
 name=gsub('.rmd', '', file)
-name=paste(Sys.Date(), '-', name, sep='')
-out.file=paste(name, '.md',sep='')
+out.file=paste(Sys.Date(), '-', name, '.md',sep='')
 fig.file=paste(name, '-figures/',sep='')
 
 knitr::opts_knit$set(base.url = "/")

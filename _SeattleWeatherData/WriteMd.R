@@ -14,8 +14,8 @@ content <- readLines(file)
 
 knitr::knit(text=content, output=out.file)
 
-file.copy(from=out.file, to='../_posts')
-file.copy(from=fig.file, to='../images', recursive=TRUE)
+file.copy(from=out.file, to='../_posts', overwrite=TRUE)
+file.copy(from=fig.file, to='../images', recursive=TRUE, overwrite=TRUE)
 
 file.remove(out.file)
 file.remove(fig.file, recursive=TRUE)
