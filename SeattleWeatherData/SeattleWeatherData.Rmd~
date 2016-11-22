@@ -7,7 +7,8 @@ category: Seattle
 tags: []
 comments: false
 mathjax:
-
+status: publish
+published: false
 ---
 
 In this post, I examine trends in Seattle weather from 1950-2016.  
@@ -99,7 +100,7 @@ I used the hourly.ds() function to load extract hourly data for all
 years and combined those into a single data.table().
 
 ```{r CombineHourlyData}
-
+source('./Functions/DarkSkyFunctions.R')
 files <- list.files('./DataIntermediate/Darksky/', full.names=TRUE)
 all.hourly <- lapply(files, function(x){
     load(x)
