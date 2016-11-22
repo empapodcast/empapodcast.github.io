@@ -1,0 +1,3 @@
+content <- readLines('SeattleWeatherData.Rmd')
+knitr::opts_chunk$set(fig.path='/figure/')
+knitr::knit(text=content, output='../_posts/2016-11-21-SeattleWeatherData.md')
