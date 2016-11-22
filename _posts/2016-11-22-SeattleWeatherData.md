@@ -7,8 +7,6 @@ category: Seattle
 tags: []
 comments: false
 mathjax:
-status: publish
-published: false
 ---
 
 In this post, I examine trends in Seattle weather from 1950-2016.  
@@ -100,21 +98,6 @@ all.hourly <- lapply(files, function(x){
     load(x)
     return(hourly.ds(out))
 })
-```
-
-```
-## Loading required package: data.table
-```
-
-```
-## data.table 1.9.6  For help type ?data.table or https://github.com/Rdatatable/data.table/wiki
-```
-
-```
-## The fastest way to learn (by data.table authors): https://www.datacamp.com/courses/data-analysis-the-data-table-way
-```
-
-```r
 all.hourly <- do.call(plyr::rbind.fill, all.hourly)
 all.hourly <- data.table(all.hourly)
 ```
@@ -123,17 +106,6 @@ all.hourly <- data.table(all.hourly)
 
 ```r
 require(ggplot2)
-```
-
-```
-## Loading required package: ggplot2
-```
-
-```
-## Warning: package 'ggplot2' was built under R version 3.3.2
-```
-
-```r
 p <- ggplot(all.hourly[year==2016&month=='Oct',],
             aes(x=time, y=temperature, colour=hour)) +
     geom_point() + geom_line() + geom_smooth() +
