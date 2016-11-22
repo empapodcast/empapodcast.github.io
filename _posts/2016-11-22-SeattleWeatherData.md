@@ -121,7 +121,7 @@ p
 ## `geom_smooth()` using method = 'loess'
 ```
 
-![plot of chunk HourlyTemperature](/SeattleWeatherData-figures/HourlyTemperature-1.png)
+![plot of chunk HourlyTemperature](/images/SeattleWeatherData-figures/HourlyTemperature-1.png)
 
 ```r
 p <- ggplot(all.hourly[year==2016&month=='Oct',],
@@ -135,5 +135,5 @@ p
 ## `geom_smooth()` using method = 'loess'
 ```
 
-![plot of chunk HourlyTemperature](/SeattleWeatherData-figures/HourlyTemperature-2.png)
+![plot of chunk HourlyTemperature](/images/SeattleWeatherData-figures/HourlyTemperature-2.png)
 
