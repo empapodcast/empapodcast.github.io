@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Trends in Seattle weather, 1950-2016"
+title: "Seattle weather, 1950-2016"
 description: Seattle weather trends, 1950-2016
 headline: Historical Seattle Weather data
 category: Seattle
@@ -9,7 +9,7 @@ comments: false
 mathjax:
 ---
 
-In this post, I examine trends in Seattle weather from 1950-2016.  
+In this post, I examine trends in Seattle weather from 1950-2016.
 
 # Historical weather data from Dark Sky
 
@@ -27,10 +27,9 @@ useful functions for accessing the API directly from R.
 First we need to install the latest version of the R wrapper library
 from GitHub.
 
-```{r InstallDarkSky, eval=FALSE}
 
+```r
 devtools::install_github("hrbrmstr/darksky")
-
 ```
 
 To use the Dark Sky API, one simply needs to sign-up
@@ -38,18 +37,13 @@ To use the Dark Sky API, one simply needs to sign-up
 secret key, you can set a global option for use in all the darksky
 requests.
 
-```{r SetGlobalApiKeyExample}
 
+```r
 Sys.setenv(darksky_api_key='StopPeekingAndGetYourOwnSecretKey')
-
 ```
 
 
-```{r SetGlobalApiKey, echo=FALSE}
 
-Sys.setenv(darksky_api_key='810a8d95ed11fc11ec7c6a0bf275307d')
-
-```
 
 ## Getting the data
 
@@ -70,8 +64,8 @@ weather data all days between 1950 to November 16, 2016, which is over
 To download those data, I used lapply() to extract data for each year.
 I saved data for each year to be used later.
 
-```{r GetAllYears, eval=FALSE}
 
+```r
 source('./Functions/DarkSkyFunctions.R')
 
 all.years <- seq(1950, 2016, 1)
@@ -84,7 +78,6 @@ lapply(all.years, function(x){
     save(out, file=paste('./DataIntermediate/Darksky/Darksky_',x,'.Rdata', sep=''))
     return(NULL)
 })
-
 ```
 
 # Hourly data
@@ -97,22 +90,48 @@ Remember that I save a separate .Rdata file for each year.  Therefore,
 I used the hourly.ds() function to load extract hourly data for all
 years and combined those into a single data.table().
 
-```{r CombineHourlyData}
+
+```r
 source('./Functions/DarkSkyFunctions.R')
 files <- list.files('./DataIntermediate/Darksky/', full.names=TRUE)
 all.hourly <- lapply(files, function(x){
     load(x)
     return(hourly.ds(out))
 })
+```
+
+```
+## Loading required package: data.table
+```
+
+```
+## data.table 1.9.6  For help type ?data.table or https://github.com/Rdatatable/data.table/wiki
+```
+
+```
+## The fastest way to learn (by data.table authors): https://www.datacamp.com/courses/data-analysis-the-data-table-way
+```
+
+```r
 all.hourly <- do.call(plyr::rbind.fill, all.hourly)
 all.hourly <- data.table(all.hourly)
-
 ```
 
 
-```{r HourlyTemperature}
 
+```r
 require(ggplot2)
+```
+
+```
+## Loading required package: ggplot2
+```
+
+```
+## Warning: package 'ggplot2' was built under R version 3.3.2
+```
+
+```r
 p <- ggplot(all.hourly[year==2016&month=='Oct',],
             aes(x=time, y=temperature, colour=hour)) +
     geom_point() + geom_line() + geom_smooth() +
@@ -122,12 +141,25 @@ p <- ggplot(all.hourly[year==2016&month=='Oct',],
         x='Date', y='Temperature (F)')
 
 p
+```
 
+```
+## `geom_smooth()` using method = 'loess'
+```
+
+![plot of chunk HourlyTemperature](/SeattleWeatherData-figures/HourlyTemperature-1.png)
+
+```r
 p <- ggplot(all.hourly[year==2016&month=='Oct',],
             aes(x=hour, y=temperature, colour=date, group=date)) +
     geom_line() + geom_smooth(se=FALSE) +
     theme_bw()
 p
+```
 
 ```
+## `geom_smooth()` using method = 'loess'
+```
+
+![plot of chunk HourlyTemperature](/SeattleWeatherData-figures/HourlyTemperature-2.png)
 
