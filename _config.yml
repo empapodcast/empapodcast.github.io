@@ -68,6 +68,9 @@ links:
     url: /
     external: false
     icon: home
+  - title: About
+    url: /about
+    icon: id-card-o
   - title: Categories
     url: /categories
   - title: Tags
